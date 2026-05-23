@@ -16,15 +16,16 @@ and a node with no children is called a leaf node.
     left      right   left       right 
    (leaf)     (leaf)  (leaf)      (leaf)
 
-    
-- This is used to store data more efficiently and fast.It organizes data in a hierarchical manner which makes
+
+  -Why we use binary tree?
+  This is used to store data more efficiently and fast.It organizes data in a hierarchical manner which makes
   searching, insertion and deletion operation much faster as compared to array.
  
  
 
  -Types of Binary tree:-
  
- 1) Full binary tree: In full binary tree each node has either 0 or 2 childern
+ 1) Full binary tree: In full binary tree each node has either 0 or 2 children
                        No node in full binary tree has 1 child.
 
  2) Complete binary tree: In complete binary tree every level is completely filled 
