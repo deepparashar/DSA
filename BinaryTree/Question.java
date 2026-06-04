@@ -84,6 +84,17 @@ public class Question {
     }
 
 
+   //  4). Same or identical tree
+   //  https://leetcode.com/problems/same-tree/description/
+
+    public boolean isSameTree(Node p, Node q) {
+            if(p == null || q == null){
+            return p == q;
+        }
+       return p.val == q.val && isSameTree(p.left, q.left) && isSameTree(p.right, q.right);
+        }
+        
+
     public static void main(String[] args) {
              Node root = new Node(1);
     root.left = new Node(2);
