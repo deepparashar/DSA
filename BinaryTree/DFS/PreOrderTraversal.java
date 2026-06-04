@@ -1,3 +1,6 @@
+package DFS;
+
+
 // In Pre-order traversal we have to print root first than left than right
 
 //In this i'm gonna write code in recursive as well as interative way using stack.

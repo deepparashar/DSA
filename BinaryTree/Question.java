@@ -1,6 +1,6 @@
 // In this code file i will be solving question regarding Binary tree
 
-import javax.swing.tree.TreeNode;
+
 
 class Node{ 
     int val;
@@ -93,7 +93,7 @@ public class Question {
         }
        return p.val == q.val && isSameTree(p.left, q.left) && isSameTree(p.right, q.right);
         }
-        
+
 
     public static void main(String[] args) {
              Node root = new Node(1);

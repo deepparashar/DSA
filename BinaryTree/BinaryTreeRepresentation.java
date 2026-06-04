@@ -1,5 +1,7 @@
 // This is a beginner friendly code representation of Binary Tree (BT)
 
+
+
 class Node {
     int val;           // Store value in node
     Node right;        // right child   

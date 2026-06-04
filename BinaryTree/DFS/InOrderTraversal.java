@@ -1,3 +1,4 @@
+package DFS;
 // In In-order traversal we have to print left first than root than right
 
 //In this i'm gonna write code in recursive as well as interative way using stack.
