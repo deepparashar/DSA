@@ -1,6 +1,6 @@
 // In this code file i will be solving question regarding Binary tree
 
-
+import java.util.ArrayList;
 
 class Node{ 
     int val;
@@ -93,6 +93,70 @@ public class Question {
         }
        return p.val == q.val && isSameTree(p.left, q.left) && isSameTree(p.right, q.right);
         }
+
+       
+       // 5). Tree boundry traversal
+        // https://www.geeksforgeeks.org/problems/boundary-traversal-of-binary-tree/1
+    
+        boolean isLeaf(Node root) {
+        return root.left == null && root.right == null;
+    }
+    
+    void addLeft(Node root, ArrayList<Integer> ans){
+        Node curr = root.left;
+        while(curr !=null){
+        if(!isLeaf(curr)) ans.add(curr.val);
+        
+            if(curr.left != null) curr = curr.left;
+            else{
+            curr = curr.right;
+            }
+        
+        }
+    }
+    
+     void addRight(Node root, ArrayList<Integer> ans){
+        Node curr = root.right;
+        ArrayList<Integer> temp = new ArrayList<Integer>();
+        
+        while(curr !=null){
+        if(!isLeaf(curr)) temp.add(curr.val);
+        
+            if(curr.right != null) curr = curr.right;
+            else{
+            curr = curr.left;
+            }
+        
+        
+        
+        }
+        for(int i = temp.size()-1; i >= 0; --i){
+            ans.add(temp.get(i));
+        }
+    }
+    
+     void addLeaf(Node root, ArrayList<Integer> ans){
+         if(isLeaf(root)){
+             ans.add(root.val);
+             return;
+         }
+         
+         if (root.left != null) addLeaf(root.left, ans);
+         if (root.right != null) addLeaf(root.right, ans);
+     }
+    
+    ArrayList<Integer> boundaryTraversal(Node root) {
+        // code here
+        ArrayList<Integer> ans = new ArrayList<Integer>();
+        
+        if(!isLeaf(root)) ans.add(root.val); 
+        
+        addLeft(root, ans);
+        addLeaf(root, ans);
+        addRight(root, ans);
+        return ans;
+        
+    }
 
 
     public static void main(String[] args) {
