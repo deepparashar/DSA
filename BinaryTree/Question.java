@@ -20,6 +20,16 @@ class Node{
     }
 }
 
+class Pair {
+    Node node;
+    int val;
+    
+    public Pair(Node node, int val){
+        this.node = node;
+        this.val = val;
+    }
+}
+
 public class Question {
 
     // 1). Finding maximum depth in binary tree
@@ -158,6 +168,39 @@ public class Question {
         
     }
 
+     // 6). Top view of binary tree
+     //  https://www.geeksforgeeks.org/problems/top-view-of-binary-tree/1
+
+     public ArrayList<Integer> topView(Node root) {
+        ArrayList<Integer> ans = new ArrayList<Integer>();
+        if (root == null) return ans;
+        Map<Integer, Integer> map = new TreeMap();
+        Queue<Pair> q = new LinkedList<Pair>();
+        
+        q.offer(new Pair(root, 0));
+        
+        while (!q.isEmpty()){
+            Pair it= q.poll();
+            int li = it.val;
+            Node temp = it.node;
+            
+            if(map.get(li) == null) map.put(li, temp.data);
+            
+            if(temp.left != null){
+                q.add(new Pair(temp.left, li - 1));
+            }
+            
+             if(temp.right != null){
+                q.add(new Pair(temp.right, li + 1));
+            }
+            
+        }
+        
+        for(Map.Entry<Integer,Integer> entry : map.entrySet()){
+          ans.add(entry.getValue()); 
+    }  
+     return ans;    
+    }
 
     public static void main(String[] args) {
              Node root = new Node(1);
