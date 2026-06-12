@@ -233,6 +233,23 @@ public class Question {
          return ans;
     }
 
+    // 8). Symmetric Tree
+    //  https://leetcode.com/problems/symmetric-tree/description/
+
+    private boolean helper(Node root1, Node root2){
+        if(root1 == null && root2 == null) return true;
+        if(root1 == null || root2 == null) return false;
+        if(root1.val != root2.val) return false;
+
+        return helper(root1.left, root2.right) && helper(root1.right, root2.left);
+    }
+
+    public boolean isSymmetric(Node root) {
+        if(root == null) return true;
+
+       return helper(root.left, root.right);
+    }
+
     public static void main(String[] args) {
              Node root = new Node(1);
     root.left = new Node(2);
