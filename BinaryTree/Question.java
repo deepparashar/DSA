@@ -1,6 +1,13 @@
 // In this code file i will be solving question regarding Binary tree
 
 import java.util.ArrayList;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Map;
+import java.util.Queue;
+import java.util.TreeMap;
+
+import javax.swing.tree.TreeNode;
 
 class Node{ 
     int val;
@@ -174,7 +181,7 @@ public class Question {
      public ArrayList<Integer> topView(Node root) {
         ArrayList<Integer> ans = new ArrayList<Integer>();
         if (root == null) return ans;
-        Map<Integer, Integer> map = new TreeMap();
+        Map<Integer, Integer> map = new TreeMap<>();
         Queue<Pair> q = new LinkedList<Pair>();
         
         q.offer(new Pair(root, 0));
@@ -184,7 +191,7 @@ public class Question {
             int li = it.val;
             Node temp = it.node;
             
-            if(map.get(li) == null) map.put(li, temp.data);
+            if(map.get(li) == null) map.put(li, temp.val);
             
             if(temp.left != null){
                 q.add(new Pair(temp.left, li - 1));
@@ -200,6 +207,30 @@ public class Question {
           ans.add(entry.getValue()); 
     }  
      return ans;    
+    }
+         
+
+    // 7). Binary Tree Right Side View
+    //https://leetcode.com/problems/binary-tree-right-side-view/description/
+
+     private void revPre(Node root, int level, List<Integer> ans){
+        if(root == null){
+          return;
+        }
+        if(level == ans.size()){
+            ans.add(root.val);
+        }
+         
+         revPre(root.right, level + 1, ans);
+         revPre(root.left, level + 1, ans);
+
+       
+      }
+
+    public List<Integer> rightSideView(Node root) {
+        List<Integer> ans = new ArrayList<>();
+        revPre(root, 0, ans);
+         return ans;
     }
 
     public static void main(String[] args) {
