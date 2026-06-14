@@ -250,6 +250,34 @@ public class Question {
        return helper(root.left, root.right);
     }
 
+    // 9).  Binary Tree Paths
+    // https://leetcode.com/problems/binary-tree-paths/description
+
+    public void helper (Node root, String path, List<String> ans){
+        if(root == null) return;
+
+        if(path.isEmpty()){
+            path += root.val;
+        }else{
+            path+= "->" + root.val;
+        }
+
+
+        if(root.left == null && root.right == null){
+            ans.add(path);
+        }
+
+        helper(root.left, path, ans);
+        helper(root.right, path, ans);
+    } 
+
+      public List<String> binaryTreePaths(Node root) {
+        List<String> ans = new ArrayList<>();
+        if(root == null) return ans;
+        helper(root, "", ans);
+        return ans;
+      }
+
     public static void main(String[] args) {
              Node root = new Node(1);
     root.left = new Node(2);
