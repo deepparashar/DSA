@@ -298,6 +298,34 @@ public class Question {
         }
       }
 
+
+      // 11). Children sum parent
+      // https://www.geeksforgeeks.org/problems/children-sum-parent/1
+
+      public boolean isSumProperty(Node root) {
+        if(root == null){
+            return true;
+        }
+
+        if(root.left == null && root.right == null){
+            return true;
+        }
+
+        int sum = 0;
+        if(root.left != null){
+            sum+= root.left.val;
+        }
+
+        if(root.right != null){
+            sum+=root.right.val;
+        }
+
+        return (root.val == sum)
+            && isSumProperty(root.left)
+             && isSumProperty(root.right);
+
+      }
+
     public static void main(String[] args) {
              Node root = new Node(1);
     root.left = new Node(2);
