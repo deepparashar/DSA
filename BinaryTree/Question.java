@@ -326,6 +326,43 @@ public class Question {
 
       }
 
+      // 12). Count Complete Tree Nodes
+      // https://leetcode.com/problems/count-complete-tree-nodes/description/
+       public int countNodes(Node root) {
+      if (root == null) return 0;
+
+        int left = getHeightLeft(root);
+        int right = getHeightRight(root);
+
+        
+        if (left == right) {
+            return (1 << left) - 1; // 2^left - 1
+        }
+
+        
+        return countNodes(root.left) + countNodes(root.right) + 1;
+    }
+
+   
+    public int getHeightLeft(Node root) {
+        int count = 0;
+        while (root != null) { 
+            count++;
+            root = root.left;
+        }
+        return count;
+    }
+
+    
+    public int getHeightRight(Node root) {
+        int count = 0;
+        while (root != null) { 
+            count++;
+            root = root.right;
+        }
+        return count;
+    }
+
     public static void main(String[] args) {
              Node root = new Node(1);
     root.left = new Node(2);
